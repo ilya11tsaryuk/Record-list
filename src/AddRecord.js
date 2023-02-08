@@ -1,18 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
+import { Form, Field } from "react-final-form";
 
-function AddRecord({ onClick }) {
-  const [value, setValue] = useState("");
+//отрисовать массив
 
-
+function AddRecord({ onCreate }) {
   return (
     <div className="box">
-      <input
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-      ></input>
-      <button className="add-record" onClick={onCreate(value)}>
-        add record
-      </button>
+      <Form
+        onSubmit={(values) => onCreate( values.title, values.description)}
+        initialValues={{ title: "", description: "" }}
+        // validate={validate}
+        render={({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <h2>Simple Default Input</h2>
+            <div>
+              <label></label>
+              <Field name="title" component="input" placeholder="Title" />
+              <Field
+                name="description"
+                component="textarea"
+                placeholder="textarea"
+              />
+
+              <button className="add-record">add record</button>
+            </div>
+          </form>
+        )}
+      />
     </div>
   );
 }

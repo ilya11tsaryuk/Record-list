@@ -4,16 +4,22 @@ import Record from "./record";
 import AddRecord from "./AddRecord";
 
 function App() {
+  const [record, setRecord] = useState([]);
 
-  const [value, setValue] = useState({
-    title:
-  })
+  const onCreate = (title, description) => {
+    if (title && description) {
+      return (
+        setRecord((prevvalue) => [...prevvalue, { title, description }]),
+        console.log(record)
+      );
+    } else {
+      return;
+    }
+  };
 
-//   const onCreate = (id, value, discription) => {
-//     return setState({})
-//   }
+  const onUpdate = (title, description) => {
 
-//описать функцию с состоянием record
+  }
 
   return (
     <div>
@@ -22,8 +28,19 @@ function App() {
         <button className="btn-log-in">log in</button>
       </div>
       <h3>My records</h3>
-      <AddRecord onCreate />
-      <Record />
+      <AddRecord onCreate={onCreate} />
+
+      {record.map((item) => {
+        return (
+          <Record
+            // id={item.index + 1}
+            key={item.title}
+            title={item.title}
+            description={item.description}
+            onUpdate={onUpdate}
+          />
+        );
+      })}
     </div>
   );
 }
