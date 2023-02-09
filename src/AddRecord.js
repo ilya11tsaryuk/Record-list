@@ -1,7 +1,6 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 
-//отрисовать массив
 
 function AddRecord({ onCreate }) {
   return (

@@ -2,45 +2,28 @@ import React, { useState } from "react";
 import slyles from "./slyle.css";
 import Record from "./record";
 import AddRecord from "./AddRecord";
+import LogIn from "./LogIn";
+import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+
 
 function App() {
-  const [record, setRecord] = useState([]);
-
-  const onCreate = (title, description) => {
-    if (title && description) {
-      return (
-        setRecord((prevvalue) => [...prevvalue, { title, description }]),
-        console.log(record)
-      );
-    } else {
-      return;
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <DashboardPage />,
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
     }
-  };
-
-  const onUpdate = (title, description) => {
-
-  }
+  ]);
 
   return (
     <div>
-      <div className="head">
-        <h1>Welcom 'user'</h1>
-        <button className="btn-log-in">log in</button>
-      </div>
-      <h3>My records</h3>
-      <AddRecord onCreate={onCreate} />
-
-      {record.map((item) => {
-        return (
-          <Record
-            // id={item.index + 1}
-            key={item.title}
-            title={item.title}
-            description={item.description}
-            onUpdate={onUpdate}
-          />
-        );
-      })}
+    
+      <RouterProvider router={router} />
     </div>
   );
 }
