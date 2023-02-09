@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav>
-      <Link to={"/login"}>login</Link>
-      <Link to={"/"}>DashboardPage</Link>
+    <nav className={'w-full flex justify-between p-5 bg-primary-700 text-white font-bold uppercase '}>
+      <Link to={"/login"} className={'hover:underline'}>login</Link>
+      <Link to={"/"} className={'hover:underline'}>DashboardPage</Link>
     </nav>
   );
 };

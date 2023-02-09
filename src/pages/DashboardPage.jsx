@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import AddRecord from "../AddRecord";
+import AddRecord from "../FormAddRecord";
 import Header from "../components/Header";
-import Record from "../record";
+import Record from "../Record";
+import FormAddRecord from "../FormAddRecord";
+import LinkForAdd from "../components/LinkForAdd";
 
 const DashboardPage = () => {
-  const [record, setRecord] = useState([]);
+  const [record, setRecord] = useState([
+    {
+      title: "first record",
+      description: "this description for fist record",
+    },
+    {
+      title: "second record",
+      description: "this description for second record",
+    },
+  ]);
   const onCreate = (title, description) => {
     if (title && description) {
       return (
@@ -12,30 +23,30 @@ const DashboardPage = () => {
         console.log(record)
       );
     } else {
-      return;
+      return "Record is not defined";
     }
   };
   return (
     <>
-    <Header />
-      <div className="head">
-        <h1>Welcom 'user'</h1>
-        <button className="btn-log-in">log in</button>
-      </div>
-      <h3>My records</h3>
-      <AddRecord onCreate={onCreate} />
+      <Header />
+      <h1 className="font-bold text-2xl m-1 p-1">Welcom 'user'</h1>
+      <LinkForAdd />
+      {/* <FormAddRecord onCreate={onCreate} /> */}
+      <h3 className="font-semibold text-xl m-1 p-1 px-2">My records</h3>
 
-      {record.map((item) => {
-        return (
-          <Record
-            // id={item.index + 1}
-            key={item.title}
-            title={item.title}
-            description={item.description}
-            // onUpdate={onUpdate}
-          />
-        );
-      })}
+      <div className=" grid grid-cols-2">
+        {record.map((item) => {
+          return (
+            <Record
+              // id={item.index + 1}
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              // onUpdate={onUpdate}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };

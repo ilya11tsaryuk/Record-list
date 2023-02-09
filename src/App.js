@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import slyles from "./slyle.css";
-import Record from "./record";
-import AddRecord from "./AddRecord";
+import slyles from "./index.css";
+import Record from "./Record";
+import AddRecord from "./FormAddRecord";
 import LogIn from "./LogIn";
 import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
-
+import AddRecordPage from "./pages/AddRecordPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,12 +17,15 @@ function App() {
     {
       path: "/login",
       element: <LoginPage />,
-    }
+    },
+    {
+      path: "/add",
+      element: <AddRecordPage />,
+    },
   ]);
 
   return (
     <div>
-    
       <RouterProvider router={router} />
     </div>
   );
