@@ -6,7 +6,7 @@ const AddRecordPage = () => {
   return (
     <div>
       <Header />
-      <FormAddRecord onCreate={console.log("1")} />
+      <FormAddRecord  />
     </div>
   );
 };

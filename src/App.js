@@ -7,6 +7,7 @@ import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import AddRecordPage from "./pages/AddRecordPage";
+import RecordsContextProvider from "./context/RecordsContext";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,7 +27,9 @@ function App() {
 
   return (
     <div>
-      <RouterProvider router={router} />
+      <RecordsContextProvider>
+        <RouterProvider router={router} />
+      </RecordsContextProvider>
     </div>
   );
 }

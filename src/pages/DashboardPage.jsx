@@ -4,28 +4,17 @@ import Header from "../components/Header";
 import Record from "../Record";
 import FormAddRecord from "../FormAddRecord";
 import LinkForAdd from "../components/LinkForAdd";
+import { useRecords } from "../context/RecordsContext";
+import { useEffect } from "react";
 
 const DashboardPage = () => {
-  const [record, setRecord] = useState([
-    {
-      title: "first record",
-      description: "this description for fist record",
-    },
-    {
-      title: "second record",
-      description: "this description for second record",
-    },
-  ]);
-  const onCreate = (title, description) => {
-    if (title && description) {
-      return (
-        setRecord((prevvalue) => [...prevvalue, { title, description }]),
-        console.log(record)
-      );
-    } else {
-      return "Record is not defined";
-    }
-  };
+  
+  const {records, getRecords} = useRecords()
+
+  useEffect(() => {
+    getRecords()
+  }, [])
+
   return (
     <>
       <Header />
@@ -34,8 +23,8 @@ const DashboardPage = () => {
       {/* <FormAddRecord onCreate={onCreate} /> */}
       <h3 className="font-semibold text-xl m-1 p-1 px-2">My records</h3>
 
-      <div className=" grid grid-cols-2">
-        {record.map((item) => {
+      <div className=" grid grid-cols-2 pr-1">
+        {records.map((item) => {
           return (
             <Record
               // id={item.index + 1}

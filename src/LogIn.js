@@ -11,7 +11,8 @@ const LogIn = () => {
       render={({ handleSubmit }) => (
         <form
           onSubmit={handleSubmit}
-          className={"flex p-2 flex-col items-center"}
+          className={"flex flex-col max-w-md m-auto items-center"}
+          // className={"flex p-2 flex-col items-center max-w-md justify-start"}
         >
           {/* <div> */}
           {/* <label>First Name</label> */}
