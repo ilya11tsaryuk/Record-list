@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Field } from "react-final-form";
+import { Form } from "react-final-form";
 import ButtonPrimary from "./components/ButtonPrimary";
 import CustomField from "./components/CustomField";
 
@@ -28,7 +28,7 @@ const LogIn = () => {
             type="password" //????????????????
             placeholder="Password"
           />
-          <ButtonPrimary type="submit" title={"Submit"} />
+          <ButtonPrimary onClick='onSubmit' type="submit" title={"Submit"} />
           {/* </div> */}
         </form>
       )}

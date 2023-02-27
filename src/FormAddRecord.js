@@ -1,17 +1,23 @@
 import React from "react";
-import { Form, Field } from "react-final-form";
+import { Form } from "react-final-form";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonPrimary from "./components/ButtonPrimary";
 import CustomField from "./components/CustomField";
 import { useRecords } from "./context/RecordsContext";
 
 function FormAddRecord() {
+  const { addRecord } = useRecords();
+  let navigate = useNavigate();
 
-  const {addRecord} = useRecords()
 
   return (
     <div>
       <Form
-      onSubmit={(values) => addRecord(values)}
+        onSubmit={(values, form) => {
+          addRecord(values);
+          form.reset();
+          navigate('/')
+        }}
         // onSubmit={(values) => onCreate(values.title, values.description)}
         initialValues={{ title: "", description: "" }}
         // validate={validate}
@@ -30,8 +36,8 @@ function FormAddRecord() {
                 type="text"
                 placeholder="Textarea"
               />
-              <div className=" self-end py-1">
-                <ButtonPrimary title={"add record"} type='submit' />
+              <div className="self-end py-1">
+                <ButtonPrimary title={"add record"} type="submit" />
               </div>
             </div>
           </form>

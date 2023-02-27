@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+/* eslint-disable */
+import React from "react";
 import slyles from "./index.css";
 import Record from "./Record";
 import AddRecord from "./FormAddRecord";
 import LogIn from "./LogIn";
-import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {  RouterProvider, createBrowserRouter } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import AddRecordPage from "./pages/AddRecordPage";
