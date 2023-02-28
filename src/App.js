@@ -1,14 +1,15 @@
 /* eslint-disable */
 import React from "react";
-import slyles from "./index.css";
-import Record from "./Record";
-import AddRecord from "./FormAddRecord";
-import LogIn from "./LogIn";
-import {  RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./index.css";
+// import Record from "./Record";
+// import AddRecord from "./FormAddRecord";
+// import LogIn from "./LogIn";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import AddRecordPage from "./pages/AddRecordPage";
 import RecordsContextProvider from "./context/RecordsContext";
+import UpdatePage from "./pages/UpdatePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App() {
     {
       path: "/add",
       element: <AddRecordPage />,
+    },
+    {
+      path: "/note/:id",
+      element: <UpdatePage />,
     },
   ]);
 

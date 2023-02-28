@@ -1,13 +1,21 @@
 import React from "react";
 import { Form } from "react-final-form";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import ButtonPrimary from "./components/ButtonPrimary";
 import CustomField from "./components/CustomField";
 import { useRecords } from "./context/RecordsContext";
 
-function FormAddRecord() {
-  const { addRecord } = useRecords();
+function FormAddRecord({ id }) {
+  const { addRecord, records, getRecordById } = useRecords();
   let navigate = useNavigate();
+  // const params = useParams();
+
+  const note = getRecordById(id);
 
 
   return (
@@ -16,10 +24,9 @@ function FormAddRecord() {
         onSubmit={(values, form) => {
           addRecord(values);
           form.reset();
-          navigate('/')
+          navigate("/");
         }}
-        // onSubmit={(values) => onCreate(values.title, values.description)}
-        initialValues={{ title: "", description: "" }}
+        initialValues={note ? note : { title: "", description: "" }}
         // validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>

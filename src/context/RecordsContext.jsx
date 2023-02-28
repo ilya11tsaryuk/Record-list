@@ -7,7 +7,6 @@ const RecordsContext = createContext();
 
 export const useRecords = () => useContext(RecordsContext);
 
-
 // eslint-disable-next-line react/prop-types
 const RecordsContextProvider = ({ children }) => {
   const [records, setRecords] = useState([]);
@@ -42,12 +41,16 @@ const RecordsContextProvider = ({ children }) => {
     }
   };
 
+  const getRecordById = (id) => {
+     return records.find((record) => id === record.id)
+  }
+
   const deleteRecord = (id) => {
     return setRecords(records.filter((record) => record.id !== id));
   };
 
-  const updateRecord = (id) => {
-    return console.log(id);
+  const updateRecord = (id, title, description) => {
+    return console.log(id, title, description);
   };
 
   // const onUpdate = () => console.log()
@@ -60,6 +63,7 @@ const RecordsContextProvider = ({ children }) => {
         addRecord,
         deleteRecord,
         updateRecord,
+        getRecordById,
       }}
     >
       <div>{children}</div>
